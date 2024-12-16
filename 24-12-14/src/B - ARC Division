@@ -1,0 +1,13 @@
+[n, r] = list(map(int,input().split()))
+d = []
+a = []
+for i in range(n):
+    tmp = list(map(int,input().split()))
+    d.append(tmp[0])
+    a.append(tmp[1])
+for i in range(n):
+    if d[i]==1 and r>=1600 and r<=2799:
+        r+=a[i]
+    elif d[i]==2 and r>=1200 and r<=2399:
+        r+=a[i]
+print(r)
