@@ -1,0 +1,30 @@
+def is_subarray_sum_exists(N, S, A):
+    # 二重周期配列を扱うためのスライディングウィンドウ
+    left = 0
+    current_sum = 0
+    
+    # 無限周期列 A をシミュレート（最大2N項を確認すれば十分）
+    extended_length = 2 * N
+    
+    for right in range(extended_length):
+        current_sum += A[right % N]  # 周期性を考慮して配列を参照
+        
+        # current_sum が S を超えたら、左側の要素を減らして調整
+        while current_sum > S and left <= right:
+            current_sum -= A[left % N]
+            left += 1
+        
+        # 和が S に一致する部分列が見つかった場合
+        if current_sum == S:
+            return "Yes"
+    
+    # すべての部分列を確認しても見つからなければ No
+    return "No"
+
+
+# 入力処理
+if __name__ == "__main__":
+    N, S = map(int, input().split())  # N:周期, S:目標和
+    A = list(map(int, input().split()))  # A:周期列
+    S=S-(S//sum(A))*sum(A)
+    print(is_subarray_sum_exists(N, S, A))
