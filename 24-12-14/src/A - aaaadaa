@@ -1,0 +1,7 @@
+[n, c1, c2] = list(input().split())
+s=input()
+n=int(n)
+for i in range(n):
+    if s[i]!=c1:
+        s=s[:i] + c2 + s[i+1:]
+print(s)
