@@ -1,0 +1,15 @@
+from itertools import combinations
+
+a = list(map(int,input().split()))
+subarray_sums = []
+for r in range(1, 6):
+    for indices in combinations(range(5), r):
+        current_sum = sum(a[i] for i in indices)
+        subarray_sums.append((current_sum, list(indices)))
+    
+    # 部分和を基準にソート（昇順）
+subarray_sums.sort(key=lambda x: (x[0] , -x[1][0]), reverse=True)  # 部分和が小さい順にソート
+for i in range(31):
+    for j in range(len(subarray_sums[i][1])):
+        print(chr(65 + subarray_sums[i][1][j]),end="")
+    print()
