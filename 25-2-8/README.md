@@ -1,2 +1,1 @@
-[a
-](https://atcoder.jp/contests/abc392)
+(https://atcoder.jp/contests/abc392)
